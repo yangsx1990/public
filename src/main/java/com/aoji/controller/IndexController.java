@@ -61,7 +61,7 @@ public class IndexController {
         return basePageModel;
     }
 
-    @RequestMapping(value="home")
+    @RequestMapping(value="/")
     public String login(){
         return "login";
     }
@@ -106,18 +106,18 @@ public class IndexController {
         //验证是否登录成功
         if(currentUser.isAuthenticated()){
             logger.info("用户[" + username + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)");
-            return "redirect:/indexPage";
+            return "redirect:/main";
         }else{
             token.clear();
-            return "redirect:/home";
+            return "redirect:/";
         }
     }
 
-    @RequestMapping(value = "indexPage")
+    @RequestMapping(value = "main")
     public String indexPage(){
         SysUser user = (SysUser) SecurityUtils.getSubject().getPrincipal();
         if(user==null){
-            return "redirect:/home";
+            return "redirect:/";
         }else{
             return "index";
         }

@@ -43,13 +43,15 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap=new LinkedHashMap<>();
         //anon--匿名访问
         filterChainDefinitionMap.put("/static/**","anon");
+        filterChainDefinitionMap.put("/css/**","anon");
+        filterChainDefinitionMap.put("/js/**","anon");
         filterChainDefinitionMap.put("/checkLogin","anon");
         filterChainDefinitionMap.put("/test","anon");
         filterChainDefinitionMap.put("/logout", "logout");
         //authc--认证后可访问
         filterChainDefinitionMap.put("/**","authc");
-        shiroFilterFactoryBean.setLoginUrl("/home");
-        shiroFilterFactoryBean.setSuccessUrl("/indexPage");
+        shiroFilterFactoryBean.setLoginUrl("/");
+        shiroFilterFactoryBean.setSuccessUrl("/main");
 
         //未授权页面
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
